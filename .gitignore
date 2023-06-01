@@ -1,0 +1,51 @@
+# ignore ClientApp folder
+ClientApp/
+LogBoard/ClientApp/
+
+
+# Compiled Object files
+LogBoard/*.slo
+LogBoard/*.lo
+LogBoard/*.o
+LogBoard/*.obj
+
+# Precompiled Headers
+LogBoard/*.gch
+LogBoard/*.pch
+
+# Compiled Dynamic libraries
+LogBoard/*.so
+LogBoard/*.dylib
+LogBoard/*.dll
+
+# Build directory
+LogBoard/build/
+LogBoard/bin/
+LogBoard/out/
+LogBoard/obj/
+LogBoard/Debug/
+LogBoard/Release/
+
+# Package Files
+LogBoard/*.7z
+LogBoard/*.dmg
+LogBoard/*.gz
+LogBoard/*.iso
+LogBoard/*.tar
+LogBoard/*.zip
+
+# Logs and databases
+LogBoard/*.log
+LogBoard/*.sql
+LogBoard/*.sqlite
+LogBoard/*.db
+
+# Other
+LogBoard/.vscode/
+LogBoard/*.userprefs
+LogBoard/Thumbs.db
+LogBoard/.DS_Store
+
+
+# appsettings.json file
+LogBoard/appsettings.json

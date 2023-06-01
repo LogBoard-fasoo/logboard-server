@@ -1,0 +1,50 @@
+# ignore ClientApp folder
+ClientApp/
+
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Build directory
+build/
+bin/
+out/
+obj/
+Debug/
+Release/
+
+# Package Files
+*.7z
+*.dmg
+*.gz
+*.iso
+*.tar
+*.zip
+
+# Logs and databases
+*.log
+*.sql
+*.sqlite
+*.db
+
+# Other
+.vscode/
+*.userprefs
+Thumbs.db
+.DS_Store
+
+
+# appsettings.json file
+appsettings.json
