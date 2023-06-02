@@ -1,9 +1,8 @@
 ﻿namespace LogBoard.Models
 {
-    public class CategoryVisitor
+    public class IndustryVisitor
     {
-        public string category { get; set; }
-
+        public string industry { get; set; }
         public int count { get; set; }
     }
 }
