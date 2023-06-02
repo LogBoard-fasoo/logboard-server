@@ -1,16 +1,18 @@
-using LogBoard.Controllers.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using LogBoard.Models;
+using Microsoft.OpenApi.Models;
+using LogBoard.Repository;
 
 namespace LogBoard
 {
     public class Startup
     {
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -20,15 +22,65 @@ namespace LogBoard
 
         public void ConfigureServices(IServiceCollection services)
         {
+            // cors 정책 설정
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowOrigin", builder =>
+                {
+                    builder.WithOrigins("*")
+                           .AllowAnyHeader()
+                           .AllowAnyMethod();
+                });
+            });
 
-            services.AddDbContext<MyDbContext>(options =>options.UseMySql(Configuration.GetConnectionString("DefaultConnection")));
-            
+            // 환경변수로 민감정보 받아오기
+            string sshHostName = Configuration["sshHostName"];
+            string sshUserName = Configuration["sshUserName"];
+            string sshPassword = Configuration["sshPassword"];
+            int sshPort = int.Parse(Configuration["sshPort"]);
+            string databaseHost = Configuration["databaseHost"];
+            int localPort = int.Parse(Configuration["localPort"]);
+
+            string databaseUser = Configuration["databaseUser"];
+            string databasePassword = Configuration["databasePassword"];
+            string databaseName = Configuration["databaseName"];
+
+
+
+            //SSH 연결 의존성 주입
+            services.AddSingleton<SshTunnelService>(new SshTunnelService(
+                sshHostName,
+                sshUserName,
+                sshPassword,
+                sshPort,
+                databaseHost,
+                localPort));
+
+            //DB연결 의존성 주입
+            services.AddSingleton<DatabaseService>(new DatabaseService(
+                databaseHost,
+                localPort,
+                databaseUser,
+                databasePassword,
+                databaseName));
+
+            services.AddTransient<VisitorsRepository>();
+
+
             services.AddControllersWithViews();
 
             services.AddSpaStaticFiles(configuration =>
             {
                 configuration.RootPath = "ClientApp/build";
             });
+
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "API 문서", Version = "v1" });
+            });
+
+
+
 
         }
 
@@ -50,6 +102,17 @@ namespace LogBoard
             app.UseSpaStaticFiles();
 
             app.UseRouting();
+
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "API 문서 V1");
+            });
+
+            app.UseCors("AllowOrigin"); // cors 미들웨어 추가
+
+
+
 
             app.UseEndpoints(endpoints =>
             {
