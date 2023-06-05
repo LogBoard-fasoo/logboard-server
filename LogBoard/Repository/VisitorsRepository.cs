@@ -100,6 +100,47 @@ namespace LogBoard.Repository
         }
 
 
+        public List<TechnologyVisitor> VisitorsByTechnology(int count, string startDate, string endDate)
+        {
+            List<TechnologyVisitor> visitors = new List<TechnologyVisitor>();
+
+
+            using (IDbConnection conn = _databaseService.GetDbConnection())
+            {
+                try
+                {
+                    string procedureName = "VisitorsByTechnology";
+                    MySqlCommand cmd = new MySqlCommand(procedureName, (MySqlConnection)conn);
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    cmd.Parameters.AddWithValue("@count", count);
+                    cmd.Parameters.AddWithValue("@startDate", startDate);
+                    cmd.Parameters.AddWithValue("@endDate", endDate);
+
+                    using (MySqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            TechnologyVisitor visitor = new TechnologyVisitor();
+                            visitor.technology = reader.GetString(0);
+                            visitor.count = reader.GetInt32(1);
+
+                            visitors.Add(visitor);
+                        }
+                    }
+
+
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Error while running the procedure: " + ex.Message);
+                }
+            }
+
+            return visitors;
+        }
+        
+
 
     }
 }
