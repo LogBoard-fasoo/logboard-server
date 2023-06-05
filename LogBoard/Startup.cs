@@ -7,6 +7,9 @@ using Microsoft.Extensions.Hosting;
 using LogBoard.Models;
 using Microsoft.OpenApi.Models;
 using LogBoard.Repository;
+using System.Reflection;
+using System;
+using System.IO;
 
 namespace LogBoard
 {
@@ -77,6 +80,15 @@ namespace LogBoard
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "API ¹®¼­", Version = "v1" });
+
+                // Set the comments path for the Swagger JSON and UI.
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                c.IncludeXmlComments(xmlPath);
+
+                // Enable annotations
+                c.EnableAnnotations();
+
             });
 
 

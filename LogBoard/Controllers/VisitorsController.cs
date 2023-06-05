@@ -33,7 +33,7 @@ namespace LogBoard.Controllers
         /// <remarks>
         /// 이 API는 주어진 기간 내의 각 카테고리별 방문자 수를 조회합니다.
         /// </remarks>
-        /// <param name="count">상위 N개의 결과를 반환할 개수</param>
+        /// <param name="count">반환할 상위 N개의 카테고리 수</param>
         /// <param name="startDate">조회 시작일</param>
         /// <param name="endDate">조회 종료일</param>
         /// <returns>주어진 기간 내의 카테고리별 방문자 수 목록</returns>
@@ -53,8 +53,18 @@ namespace LogBoard.Controllers
 
             return visitors;
         }
-        
 
+
+        /// <summary>
+        /// 주어진 기간 내의 산업군별 방문자 수를 가져옵니다.
+        /// </summary>
+        /// <remarks>
+        /// 이 API는 주어진 기간 내의 각 산업군별 방문자 수를 조회합니다.
+        /// </remarks>
+        /// <param name="count">반환할 상위 N개의 산업군 수</param>
+        /// <param name="startDate">조회 시작일</param>
+        /// <param name="endDate">조회 종료일</param>
+        /// <returns>주어진 기간 내의 산업군별 방문자 수 목록</returns>
         [HttpGet("industry")]
         public List<IndustryVisitor> VistorsByIndustry([FromQuery] int count, string startDate, string endDate)
         {
