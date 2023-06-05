@@ -68,7 +68,7 @@ namespace LogBoard
                 databaseName));
 
             services.AddTransient<VisitorsRepository>();
-
+            services.AddTransient<TypesRepository>();
 
             services.AddControllersWithViews();
 

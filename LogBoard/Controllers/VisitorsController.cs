@@ -1,11 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using LogBoard.Models;
-using System.Data;
-using MySql.Data.MySqlClient;
 using LogBoard.Repository;
 
 namespace LogBoard.Controllers
@@ -16,12 +12,10 @@ namespace LogBoard.Controllers
 
     public class VisitorsController : ControllerBase
     {
-        private readonly SshTunnelService _sshTunnelService;
         private readonly VisitorsRepository _visitRepository;
 
-        public VisitorsController(SshTunnelService sshTunnelService, VisitorsRepository visitRepository)
+        public VisitorsController(VisitorsRepository visitRepository)
         {
-            _sshTunnelService = sshTunnelService;
             _visitRepository = visitRepository;
         }
 
