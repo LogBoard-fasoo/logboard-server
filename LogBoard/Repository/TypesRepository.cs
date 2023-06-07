@@ -133,6 +133,44 @@ namespace LogBoard.Repository
             return types;
         }
 
+        public List<Type> CompanyTypes()
+        {
+            List<Type> types = new List<Type>();
+
+            using (IDbConnection conn = _databaseService.GetDbConnection())
+            {
+
+
+                try
+                {
+                    // Procedure Execution
+                    string procedureName = "CompanyTypes";
+                    MySqlCommand cmd = new MySqlCommand(procedureName, (MySqlConnection)conn);
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    using (MySqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Type type = new Type();
+                            type.index = reader.GetInt32(0);
+                            type.type = reader.GetString(1);
+
+                            types.Add(type);
+                        }
+                    }
+
+
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Error while running the procedure: " + ex.Message);
+                }
+            }
+
+            return types;
+        }
+
 
     }
 }

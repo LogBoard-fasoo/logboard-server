@@ -25,7 +25,7 @@ namespace LogBoard.Controllers
         /// 주어진 기간 내의 카테고리별 방문자 수를 가져옵니다.
         /// </summary>
         /// <remarks>
-        /// 이 API는 주어진 기간 내의 각 카테고리별 방문자 수를 조회합니다.
+        /// API CODE : <strong>1</strong> <br></br>  이 API는 주어진 기간 내의 각 카테고리별 방문자 수를 조회합니다.
         /// </remarks>
         /// <param name="count">반환할 상위 N개의 카테고리 수</param>
         /// <param name="startDate">조회 시작일(YYYY-MM-DD)</param>
@@ -53,7 +53,7 @@ namespace LogBoard.Controllers
         /// 주어진 기간 내의 산업군별 방문자 수를 가져옵니다.
         /// </summary>
         /// <remarks>
-        /// 이 API는 주어진 기간 내의 각 산업군별 방문자 수를 조회합니다.
+        /// API CODE : <strong>2</strong> <br></br> 이 API는 주어진 기간 내의 각 산업군별 방문자 수를 조회합니다.
         /// </remarks>
         /// <param name="count">반환할 상위 N개의 산업군 수</param>
         /// <param name="startDate">조회 시작일(YYYY-MM-DD)</param>
@@ -80,7 +80,7 @@ namespace LogBoard.Controllers
         /// 주어진 기간 내의 기술별 방문자 수를 가져옵니다.
         /// </summary>
         /// <remarks>
-        /// 이 API는 주어진 기간 내의 각 기술별 방문자 수를 조회합니다.
+        /// API CODE : <strong>3</strong> <br></br> 이 API는 주어진 기간 내의 각 기술별 방문자 수를 조회합니다.
         /// </remarks>
         /// <param name="count">반환할 상위 N개의 기술 수</param>
         /// <param name="startDate">조회 시작일(YYYY-MM-DD)</param>

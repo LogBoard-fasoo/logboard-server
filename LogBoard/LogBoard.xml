@@ -9,7 +9,7 @@
             웹사이트에 많이 방문한 TOP30개의 기업정보를 가져옵니다.
             </summary>
             <remarks>
-            웹사이트에 많이 방문한 TOP30개의 기업정보를 가져옵니다.
+            API CODE : <strong>7</strong> <br></br> 웹사이트에 많이 방문한 TOP30개의 기업정보를 가져옵니다.
             </remarks>
         </member>
         <member name="M:LogBoard.Controllers.TypesController.CategoryTypes">
@@ -17,7 +17,7 @@
             카테고리의 종류를 가져옵니다.
             </summary>
             <remarks>
-            카테고리의 종류를 가져옵니다.
+            API CODE : <strong>4</strong> <br></br> 카테고리의 종류를 가져옵니다.
             </remarks>
         </member>
         <member name="M:LogBoard.Controllers.TypesController.IndustryTypes">
@@ -25,7 +25,7 @@
             산업군의 종류를 가져옵니다.
             </summary>
             <remarks>
-            산업군의 종류를 가져옵니다.
+            API CODE : <strong>5</strong> <br></br> 산업군의 종류를 가져옵니다.
             </remarks>
         </member>
         <member name="M:LogBoard.Controllers.TypesController.TechnologyTypes">
@@ -33,7 +33,15 @@
             기술의 종류를 가져옵니다.
             </summary>
             <remarks>
-            기술의 종류를 가져옵니다.
+            API CODE : <strong>6</strong> <br></br> 기술의 종류를 가져옵니다.
+            </remarks>
+        </member>
+        <member name="M:LogBoard.Controllers.TypesController.CompanyTypes">
+            <summary>
+            회사의 목록을 가져옵니다.
+            </summary>
+            <remarks>
+            API CODE : <strong>8</strong> <br></br> 회사의 목록을 가져옵니다.
             </remarks>
         </member>
         <member name="M:LogBoard.Controllers.VisitedUrlsController.VisitedUrlByCategory(System.Int32,System.String,System.String)">
@@ -41,7 +49,7 @@
             선택한 카테고리(단수)에서 방문한 URL TOP10을 가져옵니다.
             </summary>
             <remarks>
-            선택한 카테고리의 방문한 URL TOP10을 가져옵니다.
+            API CODE : <strong>4-2</strong> <br></br> 선택한 카테고리의 방문한 URL TOP10을 가져옵니다.
             </remarks>
             <param name="id">카테고리 ID</param>
             <param name="startDate">조회 시작일(YYYY-MM-DD)</param>
@@ -52,7 +60,7 @@
             선택한 산업군(단수)에서 방문한 URL TOP10을 가져옵니다.
             </summary>
             <remarks>
-            선택한 산업군에서 방문한 URL TOP10을 가져옵니다.
+            API CODE : <strong>5-2</strong> <br></br> 선택한 산업군에서 방문한 URL TOP10을 가져옵니다.
             </remarks>
             <param name="id">산업군 ID</param>
             <param name="startDate">조회 시작일(YYYY-MM-DD)</param>
@@ -63,7 +71,7 @@
             선택한 기술(복수)에서 방문한 URL TOP10을 가져옵니다.
             </summary>
             <remarks>
-            선택한 기술에서 방문한 URL TOP10을 가져옵니다.
+            API CODE : <strong>6-2</strong> <br></br> 선택한 기술에서 방문한 URL TOP10을 가져옵니다.
             </remarks>
             <param name="idStr">기술 ID 문자열(1,2,3,4, ...)</param>
             <param name="startDate">조회 시작일(YYYY-MM-DD)</param>
@@ -74,7 +82,7 @@
             주어진 기간 내의 카테고리별 방문자 수를 가져옵니다.
             </summary>
             <remarks>
-            이 API는 주어진 기간 내의 각 카테고리별 방문자 수를 조회합니다.
+            API CODE : <strong>1</strong> <br></br>  이 API는 주어진 기간 내의 각 카테고리별 방문자 수를 조회합니다.
             </remarks>
             <param name="count">반환할 상위 N개의 카테고리 수</param>
             <param name="startDate">조회 시작일(YYYY-MM-DD)</param>
@@ -86,7 +94,7 @@
             주어진 기간 내의 산업군별 방문자 수를 가져옵니다.
             </summary>
             <remarks>
-            이 API는 주어진 기간 내의 각 산업군별 방문자 수를 조회합니다.
+            API CODE : <strong>2</strong> <br></br> 이 API는 주어진 기간 내의 각 산업군별 방문자 수를 조회합니다.
             </remarks>
             <param name="count">반환할 상위 N개의 산업군 수</param>
             <param name="startDate">조회 시작일(YYYY-MM-DD)</param>
@@ -98,7 +106,7 @@
             주어진 기간 내의 기술별 방문자 수를 가져옵니다.
             </summary>
             <remarks>
-            이 API는 주어진 기간 내의 각 기술별 방문자 수를 조회합니다.
+            API CODE : <strong>3</strong> <br></br> 이 API는 주어진 기간 내의 각 기술별 방문자 수를 조회합니다.
             </remarks>
             <param name="count">반환할 상위 N개의 기술 수</param>
             <param name="startDate">조회 시작일(YYYY-MM-DD)</param>

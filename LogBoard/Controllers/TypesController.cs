@@ -28,7 +28,7 @@ namespace LogBoard.Controllers
         /// 카테고리의 종류를 가져옵니다.
         /// </summary>
         /// <remarks>
-        /// 카테고리의 종류를 가져옵니다.
+        /// API CODE : <strong>4</strong> <br></br> 카테고리의 종류를 가져옵니다.
         /// </remarks>
         [HttpGet("category")]
         public List<Type> CategoryTypes()
@@ -51,7 +51,7 @@ namespace LogBoard.Controllers
         /// 산업군의 종류를 가져옵니다.
         /// </summary>
         /// <remarks>
-        /// 산업군의 종류를 가져옵니다.
+        /// API CODE : <strong>5</strong> <br></br> 산업군의 종류를 가져옵니다.
         /// </remarks>
         [HttpGet("industry")]
         public List<Type> IndustryTypes()
@@ -74,7 +74,7 @@ namespace LogBoard.Controllers
         /// 기술의 종류를 가져옵니다.
         /// </summary>
         /// <remarks>
-        /// 기술의 종류를 가져옵니다.
+        /// API CODE : <strong>6</strong> <br></br> 기술의 종류를 가져옵니다.
         /// </remarks>
         [HttpGet("technology")]
         public List<Type> TechnologyTypes()
@@ -84,6 +84,29 @@ namespace LogBoard.Controllers
             try
             {
                 types = _typesRepository.TechnologyTypes();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(BadRequest(ex.Message));
+            }
+
+            return types;
+        }
+
+        /// <summary>
+        /// 회사의 목록을 가져옵니다.
+        /// </summary>
+        /// <remarks>
+        /// API CODE : <strong>8</strong> <br></br> 회사의 목록을 가져옵니다.
+        /// </remarks>
+        [HttpGet("company")]
+        public List<Type> CompanyTypes()
+        {
+            List<Type> types = new List<Type>();
+
+            try
+            {
+                types = _typesRepository.CompanyTypes();
             }
             catch (Exception ex)
             {

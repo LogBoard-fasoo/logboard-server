@@ -28,7 +28,7 @@ namespace LogBoard.Controllers
         /// 선택한 카테고리(단수)에서 방문한 URL TOP10을 가져옵니다.
         /// </summary>
         /// <remarks>
-        /// 선택한 카테고리의 방문한 URL TOP10을 가져옵니다.
+        /// API CODE : <strong>4-2</strong> <br></br> 선택한 카테고리의 방문한 URL TOP10을 가져옵니다.
         /// </remarks>
         /// <param name="id">카테고리 ID</param>
         /// <param name="startDate">조회 시작일(YYYY-MM-DD)</param>
@@ -54,7 +54,7 @@ namespace LogBoard.Controllers
         /// 선택한 산업군(단수)에서 방문한 URL TOP10을 가져옵니다.
         /// </summary>
         /// <remarks>
-        /// 선택한 산업군에서 방문한 URL TOP10을 가져옵니다.
+        /// API CODE : <strong>5-2</strong> <br></br> 선택한 산업군에서 방문한 URL TOP10을 가져옵니다.
         /// </remarks>
         /// <param name="id">산업군 ID</param>
         /// <param name="startDate">조회 시작일(YYYY-MM-DD)</param>
@@ -80,7 +80,7 @@ namespace LogBoard.Controllers
         /// 선택한 기술(복수)에서 방문한 URL TOP10을 가져옵니다.
         /// </summary>
         /// <remarks>
-        /// 선택한 기술에서 방문한 URL TOP10을 가져옵니다.
+        /// API CODE : <strong>6-2</strong> <br></br> 선택한 기술에서 방문한 URL TOP10을 가져옵니다.
         /// </remarks>
         /// <param name="idStr">기술 ID 문자열(1,2,3,4, ...)</param>
         /// <param name="startDate">조회 시작일(YYYY-MM-DD)</param>

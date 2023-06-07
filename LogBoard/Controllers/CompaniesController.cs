@@ -27,7 +27,7 @@ namespace LogBoard.Controllers
         /// 웹사이트에 많이 방문한 TOP30개의 기업정보를 가져옵니다.
         /// </summary>
         /// <remarks>
-        /// 웹사이트에 많이 방문한 TOP30개의 기업정보를 가져옵니다.
+        /// API CODE : <strong>7</strong> <br></br> 웹사이트에 많이 방문한 TOP30개의 기업정보를 가져옵니다.
         /// </remarks>
         [HttpGet("visited/top30")]
         public List<Company> CompaniesVisitedRank([FromQuery] string startDate, string endDate)
