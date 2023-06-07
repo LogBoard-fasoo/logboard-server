@@ -171,6 +171,46 @@ namespace LogBoard.Repository
             return types;
         }
 
+        public List<Type> URLTypes()
+        {
+            List<Type> types = new List<Type>();
+
+            using (IDbConnection conn = _databaseService.GetDbConnection())
+            {
+
+
+                try
+                {
+                    // Procedure Execution
+                    string procedureName = "URLTypes";
+                    MySqlCommand cmd = new MySqlCommand(procedureName, (MySqlConnection)conn);
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    using (MySqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        var index = 1;
+                        while (reader.Read())
+                        {
+                            Type type = new Type();
+                            type.index = index;
+                            type.type = reader.GetString(0);
+
+                            types.Add(type);
+                            index++;
+                        }
+                    }
+
+
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Error while running the procedure: " + ex.Message);
+                }
+            }
+
+            return types;
+        }
+
 
     }
 }

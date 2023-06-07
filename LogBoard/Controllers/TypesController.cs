@@ -116,6 +116,29 @@ namespace LogBoard.Controllers
             return types;
         }
 
+        /// <summary>
+        /// URL의 목록을 가져옵니다.
+        /// </summary>
+        /// <remarks>
+        /// API CODE : <strong>9</strong> <br></br> URL의 목록을 가져옵니다. <br></br> 🚫URL의 Index는 서버에서 이용할 수 없습니다. URL의 경우 Index 대신 URL문자열을 직접 서버로 전송해야합니다.
+        /// </remarks>
+        [HttpGet("url")]
+        public List<Type> URLTypes()
+        {
+            List<Type> types = new List<Type>();
+
+            try
+            {
+                types = _typesRepository.URLTypes();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(BadRequest(ex.Message));
+            }
+
+            return types;
+        }
+
 
     }
 }
