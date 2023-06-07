@@ -3,8 +3,6 @@ using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace LogBoard.Repository
 {
@@ -17,9 +15,9 @@ namespace LogBoard.Repository
             _databaseService = databaseService;
         }
 
-        public List<CategoryVisitor> VisitorsByCategory(int count, string startDate, string endDate)
+        public List<PieChartModel> VisitorsByCategory(int count, string startDate, string endDate)
         {
-            List<CategoryVisitor> visitors = new List<CategoryVisitor>();
+            List<PieChartModel> visitors = new List<PieChartModel>();
 
 
             using (IDbConnection conn = _databaseService.GetDbConnection())
@@ -39,9 +37,9 @@ namespace LogBoard.Repository
                     {
                         while (reader.Read())
                         {
-                            CategoryVisitor visitor = new CategoryVisitor();
-                            visitor.category = reader.GetString(0);
-                            visitor.count = reader.GetInt32(1);
+                            PieChartModel visitor = new PieChartModel();
+                            visitor.id = reader.GetString(0);
+                            visitor.value = reader.GetInt32(1);
 
                             visitors.Add(visitor);
                         }
@@ -59,9 +57,9 @@ namespace LogBoard.Repository
         }
 
 
-        public List<IndustryVisitor> VisitorsByIndustry(int count, string startDate, string endDate)
+        public List<PieChartModel> VisitorsByIndustry(int count, string startDate, string endDate)
         {
-            List<IndustryVisitor> visitors = new List<IndustryVisitor>();
+            List<PieChartModel> visitors = new List<PieChartModel>();
 
 
             using (IDbConnection conn = _databaseService.GetDbConnection())
@@ -80,9 +78,9 @@ namespace LogBoard.Repository
                     {
                         while (reader.Read())
                         {
-                            IndustryVisitor visitor = new IndustryVisitor();
-                            visitor.industry = reader.GetString(0);
-                            visitor.count = reader.GetInt32(1);
+                            PieChartModel visitor = new PieChartModel();
+                            visitor.id = reader.GetString(0);
+                            visitor.value = reader.GetInt32(1);
 
                             visitors.Add(visitor);
                         }
@@ -100,9 +98,9 @@ namespace LogBoard.Repository
         }
 
 
-        public List<TechnologyVisitor> VisitorsByTechnology(int count, string startDate, string endDate)
+        public List<PieChartModel> VisitorsByTechnology(int count, string startDate, string endDate)
         {
-            List<TechnologyVisitor> visitors = new List<TechnologyVisitor>();
+            List<PieChartModel> visitors = new List<PieChartModel>();
 
 
             using (IDbConnection conn = _databaseService.GetDbConnection())
@@ -121,9 +119,9 @@ namespace LogBoard.Repository
                     {
                         while (reader.Read())
                         {
-                            TechnologyVisitor visitor = new TechnologyVisitor();
-                            visitor.technology = reader.GetString(0);
-                            visitor.count = reader.GetInt32(1);
+                            PieChartModel visitor = new PieChartModel();
+                            visitor.id = reader.GetString(0);
+                            visitor.value = reader.GetInt32(1);
 
                             visitors.Add(visitor);
                         }

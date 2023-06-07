@@ -32,9 +32,9 @@ namespace LogBoard.Controllers
         /// <param name="endDate">조회 종료일(YYYY-MM-DD)</param>
         /// <returns>주어진 기간 내의 카테고리별 방문자 수 목록</returns>
         [HttpGet("category")]
-        public List<CategoryVisitor> VistorsByCategory([FromQuery] int count, string startDate, string endDate)
+        public List<PieChartModel> VistorsByCategory([FromQuery] int count, string startDate, string endDate)
         {
-            List<CategoryVisitor> visitors = new List<CategoryVisitor>();
+            List<PieChartModel> visitors = new List<PieChartModel>();
 
             try
             {
@@ -60,9 +60,9 @@ namespace LogBoard.Controllers
         /// <param name="endDate">조회 종료일(YYYY-MM-DD)</param>
         /// <returns>주어진 기간 내의 산업군별 방문자 수 목록</returns>
         [HttpGet("industry")]
-        public List<IndustryVisitor> VistorsByIndustry([FromQuery] int count, string startDate, string endDate)
+        public List<PieChartModel> VistorsByIndustry([FromQuery] int count, string startDate, string endDate)
         {
-            List<IndustryVisitor> visitors = new List<IndustryVisitor>();
+            List<PieChartModel> visitors = new List<PieChartModel>();
 
             try
             {
@@ -87,9 +87,9 @@ namespace LogBoard.Controllers
         /// <param name="endDate">조회 종료일(YYYY-MM-DD)</param>
         /// <returns>주어진 기간 내의 기술별 방문자 수 목록</returns>
         [HttpGet("technology")]
-        public List<TechnologyVisitor> VistorsByTechnology([FromQuery] int count, string startDate, string endDate)
+        public List<PieChartModel> VistorsByTechnology([FromQuery] int count, string startDate, string endDate)
         {
-            List<TechnologyVisitor> visitors = new List<TechnologyVisitor>();
+            List<PieChartModel> visitors = new List<PieChartModel>();
 
             try
             {
