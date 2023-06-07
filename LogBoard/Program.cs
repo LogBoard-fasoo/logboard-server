@@ -16,8 +16,7 @@ namespace LogBoard
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
-                    webBuilder.UseStartup<Startup>()
-                    .UseUrls("https://localhost:44301", "https://192.168.20.156:44301");
+                    webBuilder.UseStartup<Startup>();
                 });
     }
 }

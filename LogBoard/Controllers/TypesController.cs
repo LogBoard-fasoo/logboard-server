@@ -24,6 +24,12 @@ namespace LogBoard.Controllers
             _typesRepository = typesRepository;
         }
 
+        /// <summary>
+        /// 카테고리의 종류를 가져옵니다.
+        /// </summary>
+        /// <remarks>
+        /// 카테고리의 종류를 가져옵니다.
+        /// </remarks>
         [HttpGet("category")]
         public List<Type> CategoryTypes()
         {
@@ -41,6 +47,12 @@ namespace LogBoard.Controllers
             return types;
         }
 
+        /// <summary>
+        /// 산업군의 종류를 가져옵니다.
+        /// </summary>
+        /// <remarks>
+        /// 산업군의 종류를 가져옵니다.
+        /// </remarks>
         [HttpGet("industry")]
         public List<Type> IndustryTypes()
         {
@@ -58,6 +70,12 @@ namespace LogBoard.Controllers
             return types;
         }
 
+        /// <summary>
+        /// 기술의 종류를 가져옵니다.
+        /// </summary>
+        /// <remarks>
+        /// 기술의 종류를 가져옵니다.
+        /// </remarks>
         [HttpGet("technology")]
         public List<Type> TechnologyTypes()
         {

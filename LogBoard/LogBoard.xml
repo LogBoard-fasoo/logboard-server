@@ -4,6 +4,71 @@
         <name>LogBoard</name>
     </assembly>
     <members>
+        <member name="M:LogBoard.Controllers.CompaniesController.CompaniesVisitedRank(System.String,System.String)">
+            <summary>
+            웹사이트에 많이 방문한 TOP30개의 기업정보를 가져옵니다.
+            </summary>
+            <remarks>
+            웹사이트에 많이 방문한 TOP30개의 기업정보를 가져옵니다.
+            </remarks>
+        </member>
+        <member name="M:LogBoard.Controllers.TypesController.CategoryTypes">
+            <summary>
+            카테고리의 종류를 가져옵니다.
+            </summary>
+            <remarks>
+            카테고리의 종류를 가져옵니다.
+            </remarks>
+        </member>
+        <member name="M:LogBoard.Controllers.TypesController.IndustryTypes">
+            <summary>
+            산업군의 종류를 가져옵니다.
+            </summary>
+            <remarks>
+            산업군의 종류를 가져옵니다.
+            </remarks>
+        </member>
+        <member name="M:LogBoard.Controllers.TypesController.TechnologyTypes">
+            <summary>
+            기술의 종류를 가져옵니다.
+            </summary>
+            <remarks>
+            기술의 종류를 가져옵니다.
+            </remarks>
+        </member>
+        <member name="M:LogBoard.Controllers.VisitedUrlsController.VisitedUrlByCategory(System.Int32,System.String,System.String)">
+            <summary>
+            선택한 카테고리(단수)에서 방문한 URL TOP10을 가져옵니다.
+            </summary>
+            <remarks>
+            선택한 카테고리의 방문한 URL TOP10을 가져옵니다.
+            </remarks>
+            <param name="id">카테고리 ID</param>
+            <param name="startDate">조회 시작일(YYYY-MM-DD)</param>
+            <param name="endDate">조회 종료일(YYYY-MM-DD)</param>
+        </member>
+        <member name="M:LogBoard.Controllers.VisitedUrlsController.VisitedUrlByIndustry(System.Int32,System.String,System.String)">
+            <summary>
+            선택한 산업군(단수)에서 방문한 URL TOP10을 가져옵니다.
+            </summary>
+            <remarks>
+            선택한 산업군에서 방문한 URL TOP10을 가져옵니다.
+            </remarks>
+            <param name="id">산업군 ID</param>
+            <param name="startDate">조회 시작일(YYYY-MM-DD)</param>
+            <param name="endDate">조회 종료일(YYYY-MM-DD)</param>
+        </member>
+        <member name="M:LogBoard.Controllers.VisitedUrlsController.VisitedUrlByTechnology(System.String,System.String,System.String)">
+            <summary>
+            선택한 기술(복수)에서 방문한 URL TOP10을 가져옵니다.
+            </summary>
+            <remarks>
+            선택한 기술에서 방문한 URL TOP10을 가져옵니다.
+            </remarks>
+            <param name="idStr">기술 ID 문자열(1,2,3,4, ...)</param>
+            <param name="startDate">조회 시작일(YYYY-MM-DD)</param>
+            <param name="endDate">조회 종료일(YYYY-MM-DD)</param>
+        </member>
         <member name="M:LogBoard.Controllers.VisitorsController.VistorsByCategory(System.Int32,System.String,System.String)">
             <summary>
             주어진 기간 내의 카테고리별 방문자 수를 가져옵니다.

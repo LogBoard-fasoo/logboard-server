@@ -69,6 +69,8 @@ namespace LogBoard
 
             services.AddTransient<VisitorsRepository>();
             services.AddTransient<TypesRepository>();
+            services.AddTransient<VisitedUrlsRepository>();
+            services.AddTransient<CompaniesRepository>();
 
             services.AddControllersWithViews();
 
@@ -79,7 +81,7 @@ namespace LogBoard
 
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "API 문서", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "LogBoard API 문서", Version = "v1" });
 
                 // Set the comments path for the Swagger JSON and UI.
                 var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
