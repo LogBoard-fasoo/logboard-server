@@ -1,4 +1,5 @@
-﻿namespace LogBoard.Models
+﻿
+namespace LogBoard.Models
 {
     public class PieChartModel
     {
