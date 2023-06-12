@@ -157,10 +157,11 @@ namespace LogBoard.Repository
                             company.companyId = reader.GetInt32(0);
                             company.name = reader.GetString(1);
                             company.domain = reader.GetString(2);
-                            company.foundedYear = reader.GetString(3);
-                            company.description = reader.GetString(4);
-                            company.revenueRange = reader.GetString(5);
-                            company.employeeRange = reader.GetString(6);
+                            company.domain = reader.IsDBNull(2) ? string.Empty : reader.GetString(2);
+                            company.foundedYear = reader.IsDBNull(3) ? string.Empty : reader.GetString(3);
+                            company.description = reader.IsDBNull(4) ? string.Empty : reader.GetString(4);
+                            company.revenueRange = reader.IsDBNull(5) ? string.Empty : reader.GetString(5);
+                            company.employeeRange = reader.IsDBNull(6) ? string.Empty : reader.GetString(6);
                             company.country = reader.GetString(7);
                             company.industry = reader.GetString(8);
                             company.categories = reader.GetString(9).Split(", ");
