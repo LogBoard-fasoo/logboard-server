@@ -58,5 +58,44 @@ namespace LogBoard.Repository
             }
             return companies;
         }
+        
+        public List<PieChartModel> InterestedProductsByCompany(int companyId, string startDate, string endDate)
+        {
+            List<PieChartModel> interestedProducts = new List<PieChartModel>();
+
+            using (IDbConnection conn = _databaseService.GetDbConnection())
+            {
+                try
+                {
+                    // Procedure Execution
+                    string procedureName = "InterestedProductsByCompany";
+                    MySqlCommand cmd = new MySqlCommand(procedureName, (MySqlConnection)conn);
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    cmd.Parameters.AddWithValue("@companyid", companyId);
+                    cmd.Parameters.AddWithValue("@startDate", startDate);
+                    cmd.Parameters.AddWithValue("@endDate", endDate);
+
+                    using (MySqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            PieChartModel data = new PieChartModel();
+                            data.id = reader.GetString(0);
+                            data.value = reader.GetInt32(1);
+
+                            interestedProducts.Add(data);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Error while running the procedure: " + ex.Message);
+                }
+            }
+            return interestedProducts;
+
+        }
+
     }
 }

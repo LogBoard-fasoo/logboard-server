@@ -46,6 +46,35 @@ namespace LogBoard.Controllers
             return companies;
         }
 
+        /// <summary>
+        /// 특정 기업의 관심 제품 TOP5를 가져옵니다.
+        /// </summary>
+        /// <remarks>
+        /// API CODE : <strong>13</strong> <br></br> 특정 기업의 관심 제품 TOP5를 가져옵니다.
+        /// </remarks>
+        /// <param name="companyId">기업 ID</param>
+        /// <param name="startDate">조회 시작일(YYYY-MM-DD)</param>
+        /// <param name="endDate">조회 종료일(YYYY-MM-DD)</param>
+        /// <returns>특정 기업의 관심 제품 TOP5를 가져옵니다.</returns>
+        [HttpGet("/interested-products/top5")]
+        public List<PieChartModel> InterestedProductsByCompany([FromQuery] int companyId, string startDate, string endDate)
+        {
+            List<PieChartModel> interestedProducts = new List<PieChartModel>();
+
+            try
+            {
+                interestedProducts = _CompaniesRepository.InterestedProductsByCompany(companyId, startDate, endDate);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(BadRequest(ex.Message));
+            }
+
+            return interestedProducts;
+
+
+        }
+
 
 
     }
