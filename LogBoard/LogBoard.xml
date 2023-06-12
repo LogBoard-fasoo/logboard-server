@@ -162,7 +162,7 @@
             <remarks>
             API CODE : <strong>12</strong> <br></br> 이 API는 주어진 기간 내의 특정 기업의 주간 방문 트랜드를 가져옵니다.
             </remarks>
-            <param name="companyId">기업 ID</param>
+            <param name="companyIds">기업 ID 배열</param>
             <param name="startDate">조회 시작일(YYYY-MM-DD)</param>
             <param name="endDate">조회 종료일(YYYY-MM-DD)</param>
             <returns>주어진 기간 내의 기술별 방문자 수 목록</returns>
