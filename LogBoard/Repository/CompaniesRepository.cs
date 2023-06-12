@@ -163,6 +163,8 @@ namespace LogBoard.Repository
                             company.employeeRange = reader.GetString(6);
                             company.country = reader.GetString(7);
                             company.industry = reader.GetString(8);
+                            company.categories = reader.GetString(9).Split(", ");
+                            company.technologies = reader.GetString(10).Split(", ");
                         }
                     }
                 }

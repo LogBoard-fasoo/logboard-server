@@ -19,5 +19,9 @@
         public string country { get; set; }
 
         public string industry { get; set; }
+
+        public string[] categories { get; set; }
+
+        public string[] technologies { get; set; }
     }
 }
