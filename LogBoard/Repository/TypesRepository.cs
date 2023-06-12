@@ -3,8 +3,6 @@ using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
 using Type = LogBoard.Models.Type;
 
 namespace LogBoard.Repository
@@ -38,8 +36,8 @@ namespace LogBoard.Repository
                         while (reader.Read())
                         {
                             Type type = new Type();
-                            type.index = reader.GetInt32(0);
-                            type.type = reader.GetString(1);
+                            type.value = reader.GetInt32(0);
+                            type.label = reader.GetString(1);
 
                             types.Add(type);
                         }
@@ -76,8 +74,8 @@ namespace LogBoard.Repository
                         while (reader.Read())
                         {
                             Type type = new Type();
-                            type.index = reader.GetInt32(0);
-                            type.type = reader.GetString(1);
+                            type.value = reader.GetInt32(0);
+                            type.label = reader.GetString(1);
 
                             types.Add(type);
                         }
@@ -115,8 +113,8 @@ namespace LogBoard.Repository
                         while (reader.Read())
                         {
                             Type type = new Type();
-                            type.index = reader.GetInt32(0);
-                            type.type = reader.GetString(1);
+                            type.value = reader.GetInt32(0);
+                            type.label = reader.GetString(1);
 
                             types.Add(type);
                         }
@@ -153,8 +151,8 @@ namespace LogBoard.Repository
                         while (reader.Read())
                         {
                             Type type = new Type();
-                            type.index = reader.GetInt32(0);
-                            type.type = reader.GetString(1);
+                            type.value = reader.GetInt32(0);
+                            type.label = reader.GetString(1);
 
                             types.Add(type);
                         }
@@ -192,8 +190,8 @@ namespace LogBoard.Repository
                         while (reader.Read())
                         {
                             Type type = new Type();
-                            type.index = index;
-                            type.type = reader.GetString(0);
+                            type.value = index;
+                            type.label = reader.GetString(0);
 
                             types.Add(type);
                             index++;

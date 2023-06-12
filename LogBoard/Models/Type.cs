@@ -2,7 +2,7 @@
 {
     public class Type
     {
-        public int index { get; set; }
-        public string type { get; set; }
+        public int value { get; set; }
+        public string label { get; set; }
     }
 }
