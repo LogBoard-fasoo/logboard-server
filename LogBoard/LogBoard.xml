@@ -36,6 +36,16 @@
             <param name="endDate">조회 종료일(YYYY-MM-DD)</param>
             <returns>특정 기업의 관심 카테고리를 가져옵니다.</returns>
         </member>
+        <member name="M:LogBoard.Controllers.CompaniesController.CompanyInfo(System.Int32)">
+            <summary>
+            특정 기업정보를 가져옵니다.
+            </summary>
+            <remarks>
+            API CODE : <strong>15</strong> <br></br> 특정 기업정보를 가져옵니다.
+            </remarks>
+            <param name="companyId">기업 ID</param>
+            <returns>특정 기업정보를 가져옵니다.</returns>
+        </member>
         <member name="M:LogBoard.Controllers.TypesController.CategoryTypes">
             <summary>
             카테고리의 종류를 가져옵니다.

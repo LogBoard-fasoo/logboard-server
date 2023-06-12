@@ -104,6 +104,33 @@ namespace LogBoard.Controllers
 
         }
 
+        /// <summary>
+        /// 특정 기업정보를 가져옵니다.
+        /// </summary>
+        /// <remarks>
+        /// API CODE : <strong>15</strong> <br></br> 특정 기업정보를 가져옵니다.
+        /// </remarks>
+        /// <param name="companyId">기업 ID</param>
+        /// <returns>특정 기업정보를 가져옵니다.</returns>
+        [HttpGet("")]
+        public CompanyDeatil CompanyInfo([FromQuery] int companyId)
+        {
+            CompanyDeatil company = new CompanyDeatil();
+
+            try
+            {
+                company = _CompaniesRepository.CompanyInfo(companyId);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(BadRequest(ex.Message));
+            }
+
+            return company;
+
+
+        }
+
 
 
     }

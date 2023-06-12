@@ -135,5 +135,45 @@ namespace LogBoard.Repository
 
         }
 
+        public CompanyDeatil CompanyInfo(int companyId)
+        {
+            CompanyDeatil company = new CompanyDeatil();
+
+            using (IDbConnection conn = _databaseService.GetDbConnection())
+            {
+                try
+                {
+                    // Procedure Execution
+                    string procedureName = "CompanyInfo";
+                    MySqlCommand cmd = new MySqlCommand(procedureName, (MySqlConnection)conn);
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    cmd.Parameters.AddWithValue("@companyid", companyId);
+
+                    using (MySqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            company.companyId = reader.GetInt32(0);
+                            company.name = reader.GetString(1);
+                            company.domain = reader.GetString(2);
+                            company.foundedYear = reader.GetString(3);
+                            company.description = reader.GetString(4);
+                            company.revenueRange = reader.GetString(5);
+                            company.employeeRange = reader.GetString(6);
+                            company.country = reader.GetString(7);
+                            company.industry = reader.GetString(8);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Error while running the procedure: " + ex.Message);
+                }
+            }
+
+            return company;
+        }
+
     }
 }
