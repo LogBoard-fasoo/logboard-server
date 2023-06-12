@@ -97,5 +97,43 @@ namespace LogBoard.Repository
 
         }
 
+        public List<PieChartModel> InterestedCategoryByCompany(int companyId, string startDate, string endDate)
+        {
+            List<PieChartModel> interestedCategory = new List<PieChartModel>();
+
+            using (IDbConnection conn = _databaseService.GetDbConnection())
+            {
+                try
+                {
+                    // Procedure Execution
+                    string procedureName = "InterestedCategoryByCompany";
+                    MySqlCommand cmd = new MySqlCommand(procedureName, (MySqlConnection)conn);
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    cmd.Parameters.AddWithValue("@companyid", companyId);
+                    cmd.Parameters.AddWithValue("@startDate", startDate);
+                    cmd.Parameters.AddWithValue("@endDate", endDate);
+
+                    using (MySqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            PieChartModel data = new PieChartModel();
+                            data.id = reader.GetString(0);
+                            data.value = reader.GetInt32(1);
+
+                            interestedCategory.Add(data);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Error while running the procedure: " + ex.Message);
+                }
+            }
+            return interestedCategory;
+
+        }
+
     }
 }

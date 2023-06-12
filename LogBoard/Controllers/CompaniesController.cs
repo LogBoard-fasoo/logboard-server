@@ -75,6 +75,35 @@ namespace LogBoard.Controllers
 
         }
 
+        /// <summary>
+        /// 특정 기업의 관심 카테고리를 가져옵니다.
+        /// </summary>
+        /// <remarks>
+        /// API CODE : <strong>14</strong> <br></br> 특정 기업의 관심카테고리를 가져옵니다.
+        /// </remarks>
+        /// <param name="companyId">기업 ID</param>
+        /// <param name="startDate">조회 시작일(YYYY-MM-DD)</param>
+        /// <param name="endDate">조회 종료일(YYYY-MM-DD)</param>
+        /// <returns>특정 기업의 관심 카테고리를 가져옵니다.</returns>
+        [HttpGet("/interested-category")]
+        public List<PieChartModel> InterestedCategoryByCompany([FromQuery] int companyId, string startDate, string endDate)
+        {
+            List<PieChartModel> interestedCategory = new List<PieChartModel>();
+
+            try
+            {
+                interestedCategory = _CompaniesRepository.InterestedCategoryByCompany(companyId, startDate, endDate);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(BadRequest(ex.Message));
+            }
+
+            return interestedCategory;
+
+
+        }
+
 
 
     }
