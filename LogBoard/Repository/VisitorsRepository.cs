@@ -199,5 +199,50 @@ namespace LogBoard.Repository
             return graphChart;
         }
 
+        public GraphChartModel WeeklyTrendsByURL(string url, string startDate, string endDate)
+        {
+            GraphChartModel graphChart = new GraphChartModel();
+            graphChart.data = new List<Data>(); // data 속성 초기화
+
+            using (IDbConnection conn = _databaseService.GetDbConnection())
+            {
+                try
+                {
+                    string procedureName = "WeeklyTrendsByURL";
+                    MySqlCommand cmd = new MySqlCommand(procedureName, (MySqlConnection)conn);
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    cmd.Parameters.AddWithValue("@url", url);
+                    cmd.Parameters.AddWithValue("@startDate", startDate);
+                    cmd.Parameters.AddWithValue("@endDate", endDate);
+
+                    using (MySqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+
+                            Data data = new Data();
+                            data.x = DateTime.TryParse(reader.GetString(0), out DateTime dt) ? dt.ToString("M\\/d") : "날짜 형식이 잘못되었습니다.";
+                            data.y = reader.GetInt32(1);
+
+
+                            graphChart.data.Add(data);
+                        }
+                        graphChart.id = url;
+                    }
+
+
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Error while retrieving the company name: " + ex.Message);
+                }
+
+
+            }
+
+            return graphChart;
+        }
+
     }
 }

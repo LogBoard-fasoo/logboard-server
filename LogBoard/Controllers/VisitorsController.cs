@@ -132,6 +132,32 @@ namespace LogBoard.Controllers
             return graphChart;
         }
 
+        /// <summary>
+        /// 주어진 기간 내의 특정 제품의 주간 방문 트랜드를 가져옵니다.
+        /// </summary>
+        /// <remarks>
+        /// API CODE : <strong>16</strong> <br></br> 이 API는 주어진 기간 내의 특정 제품의 주간 방문 트랜드를 가져옵니다.
+        /// </remarks>
+        /// <param name="url">제품명 ex) https://www.fasoo.com/products/analyticdid-use-case </param>
+        /// <param name="startDate">조회 시작일(YYYY-MM-DD)</param>
+        /// <param name="endDate">조회 종료일(YYYY-MM-DD)</param>
+        /// <returns>주어진 기간 내의 기술별 방문자 수 목록</returns>
+        [HttpGet("weekly-trends/URL")]
+        public GraphChartModel WeeklyTrendsByURL([FromQuery] string url, string startDate, string endDate)
+        {
+            GraphChartModel graphChart = new GraphChartModel();
+
+            try
+            {
+                graphChart = _visitRepository.WeeklyTrendsByURL(url, startDate, endDate);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(BadRequest(ex.Message));
+            }
+
+            return graphChart;
+        }
 
     }
 }
