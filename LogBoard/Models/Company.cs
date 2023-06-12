@@ -17,5 +17,13 @@
         public string country { get; set; }
 
         public string foundedYear { get; set; }
+
+        public string employeeRange { get; set; }
+
+        public string industry { get; set; }
+
+        public string[] categories { get; set; }
+
+        public string[] technologies { get; set; }
     }
 }
