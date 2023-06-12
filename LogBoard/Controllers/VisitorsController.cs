@@ -116,20 +116,20 @@ namespace LogBoard.Controllers
         /// <param name="endDate">조회 종료일(YYYY-MM-DD)</param>
         /// <returns>주어진 기간 내의 기술별 방문자 수 목록</returns>
         [HttpGet("weekly-trends/company")]
-        public GraphChartModel WeeklyTrendsByCompany([FromQuery] int companyId, string startDate, string endDate)
+        public List<GraphChartModel> WeeklyTrendsByCompany([FromQuery] int[] companyIds, string startDate, string endDate)
         {
-            GraphChartModel graphChart = new GraphChartModel();
+            List<GraphChartModel> graphCharts = new List<GraphChartModel>();
 
             try
             {
-                graphChart = _visitRepository.WeeklyTrendsByCompany(companyId, startDate, endDate);
+                graphCharts = _visitRepository.WeeklyTrendsByCompany(companyIds, startDate, endDate);
             }
             catch (Exception ex)
             {
                 Console.WriteLine(BadRequest(ex.Message));
             }
 
-            return graphChart;
+            return graphCharts;
         }
 
         /// <summary>

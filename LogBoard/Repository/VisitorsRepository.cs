@@ -139,64 +139,74 @@ namespace LogBoard.Repository
             return visitors;
         }
 
-        public GraphChartModel WeeklyTrendsByCompany(int companyId, string startDate, string endDate)
+        public List<GraphChartModel> WeeklyTrendsByCompany(int[] companyIds, string startDate, string endDate)
         {
-            GraphChartModel graphChart = new GraphChartModel();
-            graphChart.data = new List<Data>(); // data 속성 초기화
 
-            using (IDbConnection conn = _databaseService.GetDbConnection())
+            List<GraphChartModel> graphChartModels = new List<GraphChartModel>();
+
+            foreach (int companyId in companyIds)
             {
-                try
+                GraphChartModel graphChart = new GraphChartModel();
+                graphChart.data = new List<Data>(); // data 속성 초기화
+
+                using (IDbConnection conn = _databaseService.GetDbConnection())
                 {
-                    string companyNameQuery = "SELECT company_name FROM wp_clearbit_company WHERE company_id = @companyId";
-                    MySqlCommand companyNameCmd = new MySqlCommand(companyNameQuery, (MySqlConnection)conn);
-                    companyNameCmd.Parameters.AddWithValue("@companyId", companyId);
-
-                    string companyName = string.Empty;
-
-                    using (MySqlDataReader companyNameReader = companyNameCmd.ExecuteReader())
+                    try
                     {
-                        if (companyNameReader.Read())
+                        string companyNameQuery = "SELECT company_name FROM wp_clearbit_company WHERE company_id = @companyId";
+                        MySqlCommand companyNameCmd = new MySqlCommand(companyNameQuery, (MySqlConnection)conn);
+                        companyNameCmd.Parameters.AddWithValue("@companyId", companyId);
+
+                        string companyName = string.Empty;
+
+                        using (MySqlDataReader companyNameReader = companyNameCmd.ExecuteReader())
                         {
-                            companyName = companyNameReader.GetString(0); 
+                            if (companyNameReader.Read())
+                            {
+                                companyName = companyNameReader.GetString(0);
+                            }
                         }
+                        graphChart.id = companyName;
+
+
+                        string procedureName = "WeeklyTrendsByCompany";
+                        MySqlCommand cmd = new MySqlCommand(procedureName, (MySqlConnection)conn);
+                        cmd.CommandType = CommandType.StoredProcedure;
+
+                        cmd.Parameters.AddWithValue("@companyId", companyId);
+                        cmd.Parameters.AddWithValue("@startDate", startDate);
+                        cmd.Parameters.AddWithValue("@endDate", endDate);
+
+                        using (MySqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+
+                                Data data = new Data();
+                                data.x = DateTime.TryParse(reader.GetString(0), out DateTime dt) ? dt.ToString("M\\/d") : "날짜 형식이 잘못되었습니다.";
+                                data.y = reader.GetInt32(1);
+
+
+                                graphChart.data.Add(data);
+                            }
+                        }
+
+
                     }
-                    graphChart.id = companyName;
-
-
-                    string procedureName = "WeeklyTrendsByCompany";
-                    MySqlCommand cmd = new MySqlCommand(procedureName, (MySqlConnection)conn);
-                    cmd.CommandType = CommandType.StoredProcedure;
-
-                    cmd.Parameters.AddWithValue("@companyId", companyId);
-                    cmd.Parameters.AddWithValue("@startDate", startDate);
-                    cmd.Parameters.AddWithValue("@endDate", endDate);
-
-                    using (MySqlDataReader reader = cmd.ExecuteReader())
+                    catch (Exception ex)
                     {
-                        while (reader.Read())
-                        {
-
-                            Data data = new Data();
-                            data.x = DateTime.TryParse(reader.GetString(0), out DateTime dt) ? dt.ToString("M\\/d") : "날짜 형식이 잘못되었습니다.";
-                            data.y = reader.GetInt32(1);
-
-
-                            graphChart.data.Add(data);
-                        }
+                        throw new Exception("Error while retrieving the company name: " + ex.Message);
                     }
 
 
                 }
-                catch (Exception ex)
-                {
-                    throw new Exception("Error while retrieving the company name: " + ex.Message);
-                }
 
-
+                graphChartModels.Add(graphChart);
             }
 
-            return graphChart;
+
+
+            return graphChartModels;
         }
 
         public GraphChartModel WeeklyTrendsByURL(string url, string startDate, string endDate)

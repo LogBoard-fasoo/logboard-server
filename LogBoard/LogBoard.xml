@@ -155,7 +155,7 @@
             <param name="endDate">조회 종료일(YYYY-MM-DD)</param>
             <returns>주어진 기간 내의 기술별 방문자 수 목록</returns>
         </member>
-        <member name="M:LogBoard.Controllers.VisitorsController.WeeklyTrendsByCompany(System.Int32,System.String,System.String)">
+        <member name="M:LogBoard.Controllers.VisitorsController.WeeklyTrendsByCompany(System.Int32[],System.String,System.String)">
             <summary>
             주어진 기간 내의 특정 기업의 주간 방문 트랜드를 가져옵니다.
             </summary>
