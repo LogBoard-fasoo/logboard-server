@@ -191,7 +191,7 @@ namespace LogBoard.Repository
                         {
                             Type type = new Type();
                             type.value = index;
-                            type.label = reader.GetString(0);
+                            type.label = reader.GetString(0).Replace("https://www.fasoo.com/","");
 
                             types.Add(type);
                             index++;

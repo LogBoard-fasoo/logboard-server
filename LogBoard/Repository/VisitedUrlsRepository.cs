@@ -38,7 +38,7 @@ namespace LogBoard.Repository
                         while (reader.Read())
                         {
                             VIsitedUrl vIsitedUrl = new VIsitedUrl();
-                            vIsitedUrl.url = reader.GetString(0);
+                            vIsitedUrl.url = reader.GetString(0).Replace("https://www.fasoo.com/", "");
                             vIsitedUrl.count = reader.GetInt32(1);
 
                             visitedUrls.Add(vIsitedUrl);
@@ -75,7 +75,7 @@ namespace LogBoard.Repository
                         while (reader.Read())
                         {
                             VIsitedUrl vIsitedUrl = new VIsitedUrl();
-                            vIsitedUrl.url = reader.GetString(0);
+                            vIsitedUrl.url = reader.GetString(0).Replace("https://www.fasoo.com/", "");
                             vIsitedUrl.count = reader.GetInt32(1);
 
                             visitedUrls.Add(vIsitedUrl);
@@ -113,7 +113,7 @@ namespace LogBoard.Repository
                         while (reader.Read())
                         {
                             VIsitedUrl vIsitedUrl = new VIsitedUrl();
-                            vIsitedUrl.url = reader.GetString(0);
+                            vIsitedUrl.url = reader.GetString(0).Replace("https://www.fasoo.com/", "");
                             vIsitedUrl.count = reader.GetInt32(1);
 
                             visitedUrls.Add(vIsitedUrl);
