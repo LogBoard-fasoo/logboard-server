@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using LogBoard.Models;
 using LogBoard.Repository;
+using System.Linq;
 
 namespace LogBoard.Controllers
 {
@@ -111,18 +112,22 @@ namespace LogBoard.Controllers
         /// <remarks>
         /// API CODE : <strong>12</strong> <br></br> 이 API는 주어진 기간 내의 특정 기업의 주간 방문 트랜드를 가져옵니다.
         /// </remarks>
-        /// <param name="companyIds">기업 ID 배열</param>
+        /// <param name="companyIds">기업 ID 문자열 EX) 1,2,3,4,5,100,200,300,...</param>
         /// <param name="startDate">조회 시작일(YYYY-MM-DD)</param>
         /// <param name="endDate">조회 종료일(YYYY-MM-DD)</param>
         /// <returns>주어진 기간 내의 기술별 방문자 수 목록</returns>
         [HttpGet("weekly-trends/company")]
-        public List<GraphChartModel> WeeklyTrendsByCompany([FromQuery] int[] companyIds, string startDate, string endDate)
+        public List<GraphChartModel> WeeklyTrendsByCompany([FromQuery] string companyIds, string startDate, string endDate)
         {
             List<GraphChartModel> graphCharts = new List<GraphChartModel>();
 
+            var companyArr = companyIds.Split(",").Select(int.Parse).ToArray();
+
+
+            Console.WriteLine(companyArr);
             try
             {
-                graphCharts = _visitRepository.WeeklyTrendsByCompany(companyIds, startDate, endDate);
+                graphCharts = _visitRepository.WeeklyTrendsByCompany(companyArr, startDate, endDate);
             }
             catch (Exception ex)
             {
