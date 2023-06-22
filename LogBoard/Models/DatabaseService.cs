@@ -1,5 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
+using System;
 using System.Data;
+using System.Diagnostics;
 
 namespace LogBoard.Models
 {
@@ -15,7 +17,15 @@ namespace LogBoard.Models
         public IDbConnection GetDbConnection()
         {
             var connection = new MySqlConnection(_connectionString);
-            connection.Open();
+            try
+            {
+                connection.Open();
+            }
+            catch (Exception ex)
+            {
+                // 예외가 발생하면 로그를 남깁니다.
+                Trace.TraceError($"Error opening database connection: {ex}");
+            }
             return connection;
         }
     }
