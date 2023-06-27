@@ -1,11 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿#pragma warning disable CS1591
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using LogBoard.Models;
-using System.Data;
-using MySql.Data.MySqlClient;
 using LogBoard.Repository;
 
 namespace LogBoard.Controllers

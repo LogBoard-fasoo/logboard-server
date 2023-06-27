@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿#pragma warning disable CS1591
+using MySql.Data.MySqlClient;
 using System;
 using System.Data;
 using System.Diagnostics;

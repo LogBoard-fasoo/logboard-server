@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿#pragma warning disable CS1591
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using LogBoard.Models;

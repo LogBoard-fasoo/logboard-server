@@ -1,9 +1,9 @@
-﻿using LogBoard.Models;
+﻿#pragma warning disable CS1591
+using LogBoard.Models;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Globalization;
 
 namespace LogBoard.Repository
 {

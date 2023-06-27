@@ -1,4 +1,5 @@
-﻿using Renci.SshNet;
+﻿#pragma warning disable CS1591
+using Renci.SshNet;
 using System;
 
 namespace LogBoard.Models
